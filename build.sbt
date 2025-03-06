@@ -1,4 +1,3 @@
-val scala3Version = "3.6.3"
 val zioVersion = "2.0.15"
 val sttpVersion = "3.10.3"
 
@@ -8,11 +7,17 @@ lazy val root = project
     name := "github-user-activity",
     version := "0.1.0-SNAPSHOT",
 
-    scalaVersion := scala3Version,
-
     libraryDependencies += "dev.zio" %% "zio-test-sbt" % zioVersion % Test
   )
 
+enablePlugins(JavaAppPackaging)
+enablePlugins(ScalafmtPlugin)
+addCompilerPlugin(scalafixSemanticdb)
+
+scalacOptions ++= Seq(
+  "-deprecation",
+  "-Ywarn-unused",
+)
 
 libraryDependencies ++= Seq(
   "dev.zio" %% "zio" % zioVersion,

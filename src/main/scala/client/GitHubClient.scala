@@ -7,7 +7,7 @@ case class GitHubEvent(`type`: String, repo: Repo)
 case class Repo(name: String)
 
 object GitHubEvent {
-  implicit val repoDecoder: JsonDecoder[Repo] = DeriveJsonDecoder.gen[Repo]
+  implicit val repoDecoder: JsonDecoder[Repo]         = DeriveJsonDecoder.gen[Repo]
   implicit val eventDecoder: JsonDecoder[GitHubEvent] = DeriveJsonDecoder.gen[GitHubEvent]
 }
 
